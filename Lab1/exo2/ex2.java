@@ -5,7 +5,7 @@
  * <a href="http://www.jflex.de/">JFlex</a> 1.6.1
  * from the specification file <tt>exo2.jflex</tt>
  */
-class exo2 {
+class ex2 {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;
@@ -30,10 +30,9 @@ class exo2 {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\11\0\1\10\1\11\1\11\1\11\1\11\22\0\1\10\7\0\1\5"+
-    "\1\7\1\0\1\3\1\6\1\3\1\2\1\0\12\1\7\0\32\4"+
-    "\6\0\32\4\12\0\1\11\32\0\1\10\u15df\0\1\10\u097f\0\13\10"+
-    "\35\0\1\11\1\11\5\0\1\10\57\0\1\10\u0fa0\0\1\10\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\ud00f\0";
+    "\12\0\1\10\1\10\1\10\1\10\32\0\1\5\1\7\1\0\1\3"+
+    "\1\6\1\3\1\2\1\0\12\1\7\0\32\4\6\0\32\4\12\0"+
+    "\1\10\u1fa2\0\1\10\1\10\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
    * Translates characters to character classes
@@ -46,10 +45,10 @@ class exo2 {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\3\1\1\2\7\1\1\3\1\1\1\3";
+    "\3\1\1\2\7\1\1\3\1\1";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[14];
+    int [] result = new int[13];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -74,11 +73,11 @@ class exo2 {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\12\0\24\0\36\0\50\0\62\0\74\0\106"+
-    "\0\120\0\132\0\144\0\156\0\170\0\202";
+    "\0\0\0\11\0\22\0\33\0\44\0\55\0\66\0\77"+
+    "\0\110\0\121\0\132\0\11\0\143";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[14];
+    int [] result = new int[13];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -101,17 +100,16 @@ class exo2 {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\4\2\1\3\4\2\1\4\11\2\1\0\4\2\1\3"+
-    "\1\5\3\2\13\0\1\2\1\6\1\2\1\5\5\2"+
-    "\1\0\1\2\1\6\1\7\3\2\1\10\2\2\1\0"+
-    "\1\2\1\11\7\2\1\0\1\2\1\12\1\2\1\10"+
-    "\5\2\1\0\1\2\1\11\4\2\1\10\2\2\1\0"+
-    "\1\2\1\12\1\13\4\2\1\14\1\2\1\0\1\2"+
-    "\1\15\7\2\1\0\10\2\1\14\1\16\1\2\1\15"+
-    "\5\2\1\14\1\2\11\0\2\16";
+    "\4\2\1\3\3\2\1\4\10\2\1\0\4\2\1\3"+
+    "\1\5\2\2\12\0\1\2\1\6\1\2\1\5\4\2"+
+    "\1\0\1\2\1\6\1\7\3\2\1\10\1\2\1\0"+
+    "\1\2\1\11\6\2\1\0\1\2\1\12\1\2\1\10"+
+    "\4\2\1\0\1\2\1\11\4\2\1\10\1\2\1\0"+
+    "\1\2\1\12\1\13\4\2\1\14\1\0\1\2\1\15"+
+    "\6\2\1\0\1\2\1\15\5\2\1\14\1\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[140];
+    int [] result = new int[108];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -149,10 +147,10 @@ class exo2 {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\3\1\1\11\12\1";
+    "\3\1\1\11\11\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[14];
+    int [] result = new int[13];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -233,7 +231,7 @@ class exo2 {
    *
    * @param   in  the java.io.Reader to read input from.
    */
-  exo2(java.io.Reader in) {
+  ex2(java.io.Reader in) {
     this.zzReader = in;
   }
 
@@ -248,7 +246,7 @@ class exo2 {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 112) {
+    while (i < 82) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -587,7 +585,7 @@ class exo2 {
    */
   public static void main(String argv[]) {
     if (argv.length == 0) {
-      System.out.println("Usage : java exo2 [ --encoding <name> ] <inputfile(s)>");
+      System.out.println("Usage : java ex2 [ --encoding <name> ] <inputfile(s)>");
     }
     else {
       int firstFilePos = 0;
@@ -603,11 +601,11 @@ class exo2 {
         }
       }
       for (int i = firstFilePos; i < argv.length; i++) {
-        exo2 scanner = null;
+        ex2 scanner = null;
         try {
           java.io.FileInputStream stream = new java.io.FileInputStream(argv[i]);
           java.io.Reader reader = new java.io.InputStreamReader(stream, encodingName);
-          scanner = new exo2(reader);
+          scanner = new ex2(reader);
           while ( !scanner.zzAtEOF ) scanner.yylex();
         }
         catch (java.io.FileNotFoundException e) {

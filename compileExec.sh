@@ -1,7 +1,7 @@
 #!/bin/bash
-cd $1
-fileJflex=$1".jflex"
+cd $1/$2
+fileJflex=$2".jflex"
 run1=$(jflex $fileJflex)
-fileJava=$1".java"
+fileJava=$2".java"
 javac $fileJava
-java $1 $1".txt"
+java $2 $2".txt"
