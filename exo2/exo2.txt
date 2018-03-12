@@ -1,0 +1,6 @@
+add(8,4)
+dsdqs
+minus(3,35)
+minus(3,3.5)
+multi(3,-35)
+multi(2.4,3897)
