@@ -1,0 +1,6 @@
+A:\folder\subfolder1\file.exe
+E:\file2.bat
+folder1\image\file4
+\test\sum.c  
+A:readme.txt
+Documents  
