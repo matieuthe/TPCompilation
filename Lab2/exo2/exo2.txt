@@ -1,4 +1,8 @@
-182
-289
-9
-786
+http://www.google.fr:8080
+http://googl%698e.fr/
+http://googl%698e.fr/djsk.fr
+http://192.168.7.4/djsk.fr
+http://262.32.67/djsk.fr
+http://252.32.67.78:88/djsk.fr
+http://252.32.67.78:88/djsk/djks/ds/
+http://252.32.67.78:88/djsk/djks/ds/fc.ds

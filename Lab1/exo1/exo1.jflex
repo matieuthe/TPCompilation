@@ -3,7 +3,7 @@
 %standalone
 
 i_d = [a-zA-Z0-9]+
-username = {i_d}
+username = ({i_d}"."?)+
 domain_name = {i_d}
 extension = ("."{i_d})+
 email = {username}@{domain_name}{extension}

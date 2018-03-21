@@ -30,9 +30,11 @@ class exo2 {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\12\0\1\10\1\10\1\10\1\10\42\0\1\7\1\6\1\1\1\0"+
-    "\1\4\1\2\3\0\1\5\113\0\1\10\u1f8d\0\1\3\24\0\1\10"+
-    "\1\10\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\12\0\1\26\1\26\1\26\1\26\27\0\1\23\10\0\1\7\1\25"+
+    "\1\3\1\5\1\1\2\6\1\2\4\4\1\22\6\0\32\24\6\0"+
+    "\4\24\1\17\1\10\1\15\1\13\5\24\1\21\1\16\1\12\1\24"+
+    "\1\20\1\14\1\11\2\24\1\24\3\24\12\0\1\26\u1fa2\0\1\26"+
+    "\1\26\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
    * Translates characters to character classes
@@ -45,10 +47,11 @@ class exo2 {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\3\1\1\2\1\1\1\2\1\3\2\1\1\2";
+    "\6\1\1\2\25\1\1\3\7\1\2\3\11\1\1\3"+
+    "\4\1\10\3";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[10];
+    int [] result = new int[60];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -73,11 +76,17 @@ class exo2 {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\11\0\22\0\33\0\44\0\44\0\55\0\66"+
-    "\0\33\0\11";
+    "\0\0\0\27\0\56\0\105\0\134\0\163\0\212\0\241"+
+    "\0\270\0\317\0\346\0\375\0\u0114\0\u012b\0\u0142\0\u0159"+
+    "\0\u0170\0\u0187\0\u019e\0\u01b5\0\u01cc\0\u01e3\0\u01fa\0\u0211"+
+    "\0\u0228\0\u023f\0\u0256\0\u026d\0\u0284\0\u029b\0\u02b2\0\u02c9"+
+    "\0\u02e0\0\u02f7\0\u030e\0\u0325\0\u033c\0\u0353\0\u036a\0\u0381"+
+    "\0\u0398\0\u03af\0\u03c6\0\u03dd\0\u03f4\0\u040b\0\u0422\0\u0439"+
+    "\0\u0450\0\u0467\0\u047e\0\u0495\0\u04ac\0\u0450\0\u04c3\0\u04da"+
+    "\0\u04f1\0\u0508\0\u051f\0\u0536";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[10];
+    int [] result = new int[60];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -100,14 +109,53 @@ class exo2 {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\2\1\4\1\2\1\4\1\5\1\6"+
-    "\1\7\10\2\1\0\2\2\1\10\2\11\2\2\1\11"+
-    "\1\0\3\2\1\12\1\2\1\12\1\2\1\12\1\0"+
-    "\3\2\1\4\1\2\1\4\1\2\1\4\12\0\2\2"+
-    "\2\12\3\2\1\12\1\0";
+    "\10\2\1\3\2\2\1\4\1\2\1\5\3\2\1\6"+
+    "\4\2\1\7\26\2\1\0\11\2\1\10\14\2\1\0"+
+    "\11\2\1\11\14\2\1\0\16\2\1\12\7\2\1\0"+
+    "\21\2\1\3\4\2\30\0\12\2\1\13\13\2\1\0"+
+    "\11\2\1\14\14\2\1\0\12\2\1\15\13\2\1\0"+
+    "\22\2\1\16\3\2\1\0\12\2\1\17\13\2\1\0"+
+    "\13\2\1\20\12\2\1\0\25\2\1\21\1\0\14\2"+
+    "\1\13\5\2\1\16\3\2\1\0\17\2\1\22\6\2"+
+    "\1\0\25\2\1\23\1\0\20\2\1\13\5\2\1\0"+
+    "\1\2\1\24\1\25\1\26\1\25\1\27\1\25\1\2"+
+    "\12\30\1\2\1\31\1\30\1\2\1\0\1\2\1\25"+
+    "\1\32\1\25\1\26\2\25\1\33\16\2\1\0\1\2"+
+    "\6\26\1\33\16\2\1\0\7\2\1\33\16\2\1\0"+
+    "\1\2\6\25\1\33\16\2\1\0\7\2\1\34\12\35"+
+    "\1\2\1\36\1\35\1\2\1\0\1\2\6\37\17\2"+
+    "\1\0\1\2\3\26\1\2\2\26\1\33\16\2\1\0"+
+    "\1\2\1\40\1\41\1\42\1\41\1\43\1\41\17\2"+
+    "\1\0\10\2\12\35\1\2\1\36\1\35\1\2\1\0"+
+    "\7\2\1\34\12\35\1\44\1\36\1\35\1\45\1\0"+
+    "\1\2\6\46\17\2\1\0\1\2\6\37\1\34\12\35"+
+    "\1\2\1\36\1\35\1\2\1\0\1\2\1\41\1\47"+
+    "\1\41\1\42\2\41\1\50\16\2\1\0\1\2\6\42"+
+    "\1\50\16\2\1\0\7\2\1\50\16\2\1\0\1\2"+
+    "\6\41\1\50\16\2\1\0\1\2\6\51\17\2\1\0"+
+    "\10\2\12\52\1\2\1\53\1\52\1\2\1\0\1\2"+
+    "\6\46\1\34\12\35\1\44\1\36\1\35\1\45\1\0"+
+    "\1\2\3\42\1\2\2\42\1\50\16\2\1\0\1\2"+
+    "\1\54\1\55\1\56\1\55\1\57\1\55\17\2\1\0"+
+    "\1\2\6\60\17\2\1\0\7\2\1\61\12\52\1\2"+
+    "\1\53\1\52\1\45\1\0\1\2\6\62\17\2\1\0"+
+    "\1\2\1\55\1\63\1\55\1\56\2\55\1\64\16\2"+
+    "\1\0\1\2\6\56\1\64\16\2\1\0\7\2\1\64"+
+    "\16\2\1\0\1\2\6\55\1\64\16\2\1\0\1\2"+
+    "\6\65\16\2\1\45\1\0\10\2\12\66\2\2\1\66"+
+    "\1\2\1\0\1\2\6\62\1\61\12\52\1\2\1\53"+
+    "\1\52\1\45\1\0\1\2\3\56\1\2\2\56\1\64"+
+    "\16\2\1\0\1\2\1\67\1\70\1\71\1\70\1\72"+
+    "\1\70\17\2\1\0\1\2\6\73\16\2\1\45\1\0"+
+    "\1\2\1\70\1\74\1\70\1\71\2\70\13\2\1\44"+
+    "\2\2\1\45\1\0\1\2\6\71\13\2\1\44\2\2"+
+    "\1\45\1\0\22\2\1\44\2\2\1\45\1\0\1\2"+
+    "\6\70\13\2\1\44\2\2\1\45\1\0\25\2\1\45"+
+    "\1\0\1\2\3\71\1\2\2\71\13\2\1\44\2\2"+
+    "\1\45\1\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[63];
+    int [] result = new int[1357];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -145,10 +193,10 @@ class exo2 {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\6\1\1\11\3\1";
+    "\6\1\1\11\65\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[10];
+    int [] result = new int[60];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -244,7 +292,7 @@ class exo2 {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 76) {
+    while (i < 116) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -539,15 +587,15 @@ class exo2 {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { System.out.println("Incorrect");
+            { System.out.println("Incorrect : " + yytext());
             }
           case 4: break;
           case 2: 
-            { System.out.println("IP");
+            { System.out.print(yytext());
             }
           case 5: break;
           case 3: 
-            { System.out.print(yytext());
+            { System.out.println("Address : " + yytext());
             }
           case 6: break;
           default:

@@ -3,4 +3,8 @@ E:\file2.bat
 folder1\image\file4
 \test\sum.c  
 A:readme.txt
-Documents  
+Documents 
+folder1/image/file4
+E:\\file2.bat
+A\readme.txt
+

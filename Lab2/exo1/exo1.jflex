@@ -7,7 +7,7 @@ id = [0-9A-Za-z]+
 pathName = {id}
 fileName = {id}
 fileType = {id}
-pathFileName = ({drive}\:)?\\?({pathName}\\)*{fileName}("."{fileType})?\s*
+pathFileName = ({drive}:)?\\?({pathName}\\)*{fileName}("."{fileType})?\s*
 
 %%
 {pathFileName} {
