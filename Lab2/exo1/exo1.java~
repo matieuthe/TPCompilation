@@ -545,9 +545,7 @@ class exo1 {
             }
           case 4: break;
           case 2: 
-            { String fileName = yytext();
-    fileName.replace("\\", "\\\\");
-    System.out.println("Correct : " + fileName+"\n");
+            { System.out.println("Correct : " + yytext()+"\n");
             }
           case 5: break;
           case 3: 

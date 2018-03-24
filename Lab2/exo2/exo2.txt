@@ -6,3 +6,6 @@ http://262.32.67/djsk.fr
 http://252.32.67.78:88/djsk.fr
 http://252.32.67.78:88/djsk/djks/ds/
 http://252.32.67.78:88/djsk/djks/ds/fc.ds
+http://252.32.67.78:88/djsk/djks/ds/fc.ds#dsdlk87
+http://252.32.67.78:88/djsk/d%67jks/ds/fc.ds#dsdlk87
+http://252.32.67.78:88//djsk/d%67jks/ds/fc.ds#dsdlk87

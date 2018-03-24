@@ -11,9 +11,7 @@ pathFileName = ({drive}:)?\\?({pathName}\\)*{fileName}("."{fileType})?\s*
 
 %%
 {pathFileName} {
-    String fileName = yytext();
-    fileName.replace("\\", "\\\\");
-    System.out.println("Correct : " + fileName+"\n");
+    System.out.println("Correct : " + yytext()+"\n");
 }
 
 .* {
