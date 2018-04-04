@@ -1,0 +1,8 @@
+#include <stdio.h>
+int main(int i)
+{
+    if(i==1) return 1;
+    /* Comment is here */
+    else return 0;
+    
+}

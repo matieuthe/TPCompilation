@@ -11,7 +11,7 @@ escape = %[0-9]+
 id = [A-Za-z0-9]|{escape}
 extension = [A-Za-z]+
 
-domain = (www".")?({id}"."?)+{extension}+
+domain = (www".")?({id}+".")+{extension}+
 portNumber = ":"[0-9]{2,4}
 arobase = "#"[A-Za-z0-9]+
 
