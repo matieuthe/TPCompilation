@@ -3,10 +3,12 @@ class Utilitaire{
     public static Utilitaire INSTANCE = new Utilitaire();
     private int value;
     private String res;
-
+    private boolean comment;
+    
     private Utilitaire(){
         value = 0;
-        res = "";        
+        res = "";
+        comment = false;
     }
     
     public void printStart(){
@@ -14,7 +16,6 @@ class Utilitaire{
         init += "<H2>main.c</H2>\n";
         init += "<CODE>";
         res+= init;
-        //System.out.print(init);
     }
     
     public void copyToFile(){
@@ -47,34 +48,52 @@ class Utilitaire{
         String fin = "\n</CODE></BODY></HTML>";
         res+=fin;
         System.out.println(res);
-        //System.out.println(fin);
     }
     
     private void printFont(String value, String color, boolean br){
-        String brEnd = "";
-        if(br) brEnd = "<BR>";
-        String fontRes = "\n<FONT COLOR=\"" + color + "\">" + value + "</FONT>" + brEnd;
-        res += fontRes;
-        //System.out.print(fontRes);
+        if(comment){
+            res += " " + value;
+        }else{
+            String brEnd = "";
+            if(br) brEnd = "<BR>";
+            String fontRes = "\n<FONT COLOR=\"" + color + "\">" + value + "</FONT>" + brEnd;
+            res += fontRes;
+        }
     }
     
     public void printOtherText(String value, boolean br){
-        String line = value;
-        if(br) line += "<BR>";
-        res+=line;
-        //System.out.print(line);
+        if(comment){
+            res += " " + value;
+        }else{
+            String line = value;
+            if(br) line += "<BR>";
+            res+=line;
+        }
+    }
+    
+    public void printBR(){
+        res += "<BR>";
+    }
+    
+    public void startComment(){
+        comment = true;
+        res += "\n<FONT COLOR=\"#C0C0C0\">/*";
+    }
+    
+    public void endComment(){
+        comment = false;
+        res += " */</FONT><BR>";
     }
     
     public void printKeyWord(String value){
         printFont(value, "#0000FF", false);
-        //System.out.print("<FONT COLOR=\"#0000FF\">" + value + "</FONT>");
     }
     
     public void printInclude(String value){
         printFont("#include &lt;" + value + "&gt;", "#00FF00", true);
     }
     
-    public void printComment(String value){
+    public void printOneLineComment(String value){
         printFont(value, "#C0C0C0", true);
     }
     
@@ -100,20 +119,34 @@ include = #include
 number = \s*[0-9].*
 inclusion = #include.*
 comment = \s*\/\*.*\*\/.*
+oneLineComment = \s*\/\/.*
+startComment = \s*\/\*.*
+endComment = \s*\*\/.*
 
 %%
 {keyWord} {
     String line = yytext().trim();
+    int endLine = line.indexOf('\n');
     int space = line.indexOf(' ');
     int parental = line.indexOf('(');
-    if(space > parental && parental != -1){
+    if(space == -1) space = 10000;
+    if(endLine == -1) endLine = 10000;
+    if(parental == -1) parental = 10000;    
+    if(space > parental && endLine > parental){
         yypushback(line.length() - parental);
         Utilitaire.INSTANCE.printKeyWord(line.substring(0,parental));
     } 
-    else if(space != -1){
+    else if(endLine > space){
         yypushback(line.length() - space);
         Utilitaire.INSTANCE.printKeyWord(line.substring(0,space));
-    } 
+    }else if(endLine != 10000){
+        yypushback(line.length() - endLine);
+        Utilitaire.INSTANCE.printKeyWord(line.substring(0,endLine));
+        Utilitaire.INSTANCE.printBR();
+    }else{
+        Utilitaire.INSTANCE.printKeyWord(line);
+        Utilitaire.INSTANCE.printBR();
+    }
 }
 
 {inclusion} {
@@ -124,23 +157,21 @@ comment = \s*\/\*.*\*\/.*
     Utilitaire.INSTANCE.printInclude(name);
 }
 
-{comment} {
+{startComment} {
     String line = yytext().trim();
-    int deb = -1;
-    int fin = -1;
-    for(int i = 0; i < line.length() - 2; i++){
-        if(line.charAt(i) == '/' && line.charAt(i+1) == '*'){
-            deb = i;
-            i = line.length();
-        }
-    }
-    for(int i = deb+2; i < line.length() - 1; i++){
-        if(line.charAt(i) == '*' && line.charAt(i+1) == '/'){
-            fin = i+1;
-            i = line.length();
-        }
-    }
-    Utilitaire.INSTANCE.printComment(line.substring(deb,fin));
+    Utilitaire.INSTANCE.startComment();
+    yypushback(line.length() - 2);
+}
+
+{endComment} {
+    String line = yytext().trim();
+    Utilitaire.INSTANCE.endComment();
+    yypushback(line.length() - 2);
+}
+
+{oneLineComment} {
+    String line = yytext().trim();
+    Utilitaire.INSTANCE.printOneLineComment(line);
 }
 
 {number} {

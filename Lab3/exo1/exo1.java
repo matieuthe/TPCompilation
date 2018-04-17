@@ -5,10 +5,12 @@ class Utilitaire{
     public static Utilitaire INSTANCE = new Utilitaire();
     private int value;
     private String res;
-
+    private boolean comment;
+    
     private Utilitaire(){
         value = 0;
-        res = "";        
+        res = "";
+        comment = false;
     }
     
     public void printStart(){
@@ -16,7 +18,6 @@ class Utilitaire{
         init += "<H2>main.c</H2>\n";
         init += "<CODE>";
         res+= init;
-        //System.out.print(init);
     }
     
     public void copyToFile(){
@@ -49,34 +50,52 @@ class Utilitaire{
         String fin = "\n</CODE></BODY></HTML>";
         res+=fin;
         System.out.println(res);
-        //System.out.println(fin);
     }
     
     private void printFont(String value, String color, boolean br){
-        String brEnd = "";
-        if(br) brEnd = "<BR>";
-        String fontRes = "\n<FONT COLOR=\"" + color + "\">" + value + "</FONT>" + brEnd;
-        res += fontRes;
-        //System.out.print(fontRes);
+        if(comment){
+            res += " " + value;
+        }else{
+            String brEnd = "";
+            if(br) brEnd = "<BR>";
+            String fontRes = "\n<FONT COLOR=\"" + color + "\">" + value + "</FONT>" + brEnd;
+            res += fontRes;
+        }
     }
     
     public void printOtherText(String value, boolean br){
-        String line = value;
-        if(br) line += "<BR>";
-        res+=line;
-        //System.out.print(line);
+        if(comment){
+            res += " " + value;
+        }else{
+            String line = value;
+            if(br) line += "<BR>";
+            res+=line;
+        }
+    }
+    
+    public void printBR(){
+        res += "<BR>";
+    }
+    
+    public void startComment(){
+        comment = true;
+        res += "\n<FONT COLOR=\"#C0C0C0\">/*";
+    }
+    
+    public void endComment(){
+        comment = false;
+        res += " */</FONT><BR>";
     }
     
     public void printKeyWord(String value){
         printFont(value, "#0000FF", false);
-        //System.out.print("<FONT COLOR=\"#0000FF\">" + value + "</FONT>");
     }
     
     public void printInclude(String value){
         printFont("#include &lt;" + value + "&gt;", "#00FF00", true);
     }
     
-    public void printComment(String value){
+    public void printOneLineComment(String value){
         printFont(value, "#C0C0C0", true);
     }
     
@@ -135,9 +154,9 @@ class exo1 {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\6\1\1\2\1\1\1\3\1\1\1\0\4\1\4\0"+
-    "\2\1\2\4\2\1\5\0\3\1\3\0\1\1\1\5"+
-    "\1\1\1\0\1\1\1\0\2\1\1\6";
+    "\6\1\1\2\1\1\1\3\2\1\1\0\4\1\5\0"+
+    "\1\1\1\4\1\5\1\6\2\7\2\1\4\0\2\1"+
+    "\2\0\2\1\1\0\1\1\1\0\2\1\1\10";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[45];
@@ -166,7 +185,7 @@ class exo1 {
 
   private static final String ZZ_ROWMAP_PACKED_0 =
     "\0\0\0\23\0\46\0\71\0\114\0\137\0\162\0\205"+
-    "\0\230\0\253\0\162\0\276\0\321\0\344\0\367\0\u010a"+
+    "\0\230\0\253\0\276\0\162\0\321\0\344\0\367\0\u010a"+
     "\0\u011d\0\u0130\0\u0143\0\u0156\0\u0169\0\u017c\0\u018f\0\u01a2"+
     "\0\u01b5\0\u01c8\0\u01db\0\u01ee\0\u0201\0\u0214\0\u0227\0\u023a"+
     "\0\u024d\0\u0260\0\u0273\0\u0286\0\u0299\0\u02ac\0\u02bf\0\u02d2"+
@@ -197,30 +216,30 @@ class exo1 {
 
   private static final String ZZ_TRANS_PACKED_0 =
     "\1\2\1\3\1\4\3\2\1\5\2\2\1\6\2\2"+
-    "\1\7\1\10\2\2\1\11\1\12\15\2\1\0\7\2"+
-    "\1\3\1\4\3\2\1\5\2\2\1\6\2\2\1\13"+
-    "\3\2\1\11\1\12\4\2\1\14\1\2\1\15\6\2"+
-    "\1\0\15\2\1\16\4\2\1\0\14\2\1\17\5\2"+
-    "\1\0\6\2\1\0\1\13\1\20\3\0\1\21\2\0"+
-    "\1\22\2\0\1\13\3\0\1\11\1\23\1\0\2\2"+
-    "\1\24\11\2\1\0\6\2\14\11\1\0\6\11\14\2"+
-    "\1\0\5\2\1\25\4\2\1\15\7\2\1\0\7\2"+
-    "\1\26\11\2\1\27\1\26\16\2\1\30\3\2\1\0"+
-    "\12\2\1\31\7\2\1\0\6\2\3\0\1\32\1\0"+
-    "\1\33\24\0\1\34\21\0\1\35\36\0\1\36\3\2"+
-    "\1\37\10\2\1\0\6\2\14\25\1\0\5\25\1\40"+
-    "\1\27\1\26\12\27\1\26\22\27\1\0\6\27\6\2"+
-    "\1\15\5\2\1\0\20\2\1\41\1\2\1\0\6\2"+
-    "\4\0\1\33\17\0\1\26\11\0\1\27\1\26\16\0"+
-    "\1\42\16\0\1\43\16\0\14\36\1\0\5\36\1\44"+
-    "\14\2\1\0\1\2\1\45\4\2\14\25\1\0\4\25"+
-    "\1\46\1\40\11\2\1\47\2\2\1\0\6\2\6\0"+
-    "\1\33\26\0\1\50\10\0\14\36\1\0\4\36\1\46"+
-    "\1\44\7\2\1\51\4\2\1\0\6\2\14\46\1\0"+
-    "\6\46\3\2\1\15\10\2\1\0\6\2\11\0\1\52"+
-    "\11\0\12\2\1\53\1\2\1\0\6\2\3\0\1\33"+
-    "\17\0\14\2\1\0\2\2\1\54\11\2\1\55\5\2"+
-    "\1\0\6\2\14\55\1\0\6\55";
+    "\1\7\1\10\2\2\1\11\1\12\1\13\14\2\1\0"+
+    "\7\2\1\3\1\4\3\2\1\5\2\2\1\6\2\2"+
+    "\1\14\3\2\1\11\1\12\1\13\3\2\1\15\1\2"+
+    "\1\16\6\2\1\0\15\2\1\17\4\2\1\0\14\2"+
+    "\1\20\5\2\1\0\6\2\1\0\1\14\1\21\3\0"+
+    "\1\22\2\0\1\23\2\0\1\14\3\0\1\11\1\24"+
+    "\1\25\2\2\1\26\11\2\1\0\6\2\14\11\1\0"+
+    "\6\11\14\2\1\0\4\2\1\27\1\30\14\2\1\0"+
+    "\4\2\1\31\5\2\1\16\7\2\1\0\7\2\1\32"+
+    "\11\2\1\33\1\32\16\2\1\34\3\2\1\0\12\2"+
+    "\1\35\7\2\1\0\6\2\3\0\1\36\1\0\1\37"+
+    "\24\0\1\40\21\0\1\41\35\0\1\27\1\30\21\0"+
+    "\1\31\1\0\3\2\1\42\10\2\1\0\6\2\14\27"+
+    "\1\0\6\27\14\30\1\0\6\30\14\31\1\0\6\31"+
+    "\1\33\1\32\12\33\1\32\22\33\1\0\6\33\6\2"+
+    "\1\16\5\2\1\0\20\2\1\43\1\2\1\0\6\2"+
+    "\4\0\1\37\17\0\1\32\11\0\1\33\1\32\16\0"+
+    "\1\44\16\0\1\45\16\0\14\2\1\0\1\2\1\46"+
+    "\15\2\1\47\2\2\1\0\6\2\6\0\1\37\26\0"+
+    "\1\50\10\0\7\2\1\51\4\2\1\0\11\2\1\16"+
+    "\10\2\1\0\6\2\11\0\1\52\11\0\12\2\1\53"+
+    "\1\2\1\0\6\2\3\0\1\37\17\0\14\2\1\0"+
+    "\2\2\1\54\11\2\1\55\5\2\1\0\6\2\14\55"+
+    "\1\0\6\55";
 
   private static int [] zzUnpackTrans() {
     int [] result = new int[836];
@@ -261,8 +280,8 @@ class exo1 {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\12\1\1\0\4\1\4\0\6\1\5\0\3\1\3\0"+
-    "\3\1\1\0\1\1\1\0\3\1";
+    "\13\1\1\0\4\1\5\0\10\1\4\0\2\1\2\0"+
+    "\2\1\1\0\1\1\1\0\3\1";
 
   private static int [] zzUnpackAttribute() {
     int [] result = new int[45];
@@ -699,11 +718,11 @@ class exo1 {
         }
     }
             }
-          case 7: break;
+          case 9: break;
           case 2: 
             { System.out.print(yytext());
             }
-          case 8: break;
+          case 10: break;
           case 3: 
             { String line = yytext().trim();
     int fin = -1;
@@ -714,48 +733,57 @@ class exo1 {
     Utilitaire.INSTANCE.printNumber(line.substring(0,fin+1));
     yypushback(line.length() - (fin+1));
             }
-          case 9: break;
+          case 11: break;
           case 4: 
             { String line = yytext().trim();
+    Utilitaire.INSTANCE.printOneLineComment(line);
+            }
+          case 12: break;
+          case 5: 
+            { String line = yytext().trim();
+    Utilitaire.INSTANCE.startComment();
+    yypushback(line.length() - 2);
+            }
+          case 13: break;
+          case 6: 
+            { String line = yytext().trim();
+    Utilitaire.INSTANCE.endComment();
+    yypushback(line.length() - 2);
+            }
+          case 14: break;
+          case 7: 
+            { String line = yytext().trim();
+    int endLine = line.indexOf('\n');
     int space = line.indexOf(' ');
     int parental = line.indexOf('(');
-    if(space > parental && parental != -1){
+    if(space == -1) space = 10000;
+    if(endLine == -1) endLine = 10000;
+    if(parental == -1) parental = 10000;    
+    if(space > parental && endLine > parental){
         yypushback(line.length() - parental);
         Utilitaire.INSTANCE.printKeyWord(line.substring(0,parental));
     } 
-    else if(space != -1){
+    else if(endLine > space){
         yypushback(line.length() - space);
         Utilitaire.INSTANCE.printKeyWord(line.substring(0,space));
+    }else if(endLine != 10000){
+        yypushback(line.length() - endLine);
+        Utilitaire.INSTANCE.printKeyWord(line.substring(0,endLine));
+        Utilitaire.INSTANCE.printBR();
+    }else{
+        Utilitaire.INSTANCE.printKeyWord(line);
+        Utilitaire.INSTANCE.printBR();
     }
             }
-          case 10: break;
-          case 5: 
-            { String line = yytext().trim();
-    int deb = -1;
-    int fin = -1;
-    for(int i = 0; i < line.length() - 2; i++){
-        if(line.charAt(i) == '/' && line.charAt(i+1) == '*'){
-            deb = i;
-            i = line.length();
-        }
-    }
-    for(int i = deb+2; i < line.length() - 1; i++){
-        if(line.charAt(i) == '*' && line.charAt(i+1) == '/'){
-            fin = i+1;
-            i = line.length();
-        }
-    }
-    Utilitaire.INSTANCE.printComment(line.substring(deb,fin));
-            }
-          case 11: break;
-          case 6: 
+          case 15: break;
+          case 8: 
             { String name = yytext();
     int deb = name.indexOf("<");
     int fin = name.indexOf(">");
     name = name.substring(deb+1,fin);
     Utilitaire.INSTANCE.printInclude(name);
             }
-          case 12: break;
+          case 16: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }
