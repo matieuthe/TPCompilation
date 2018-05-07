@@ -20,6 +20,7 @@ class Utilitaire{
         this._associations.put("double", "DOUBLE_TYPE");
         this._associations.put("int", "INT_TYPE");
         this._associations.put("while", "WHILE");
+        this._associations.put("print", "PRINT");
         this._associations.put("[", "BO");
         this._associations.put("]", "BC");
         this._associations.put(";", "SCL");
@@ -43,18 +44,17 @@ class Utilitaire{
                 corres = "ID:" + value;
             }
             res+= corres + " ";
-            System.out.println(corres);
         }
     }
     
     public void printInteger(String value){
-        res+= "INT:" + value + " ";
-        System.out.println("INT:" + value);
+        if(!comment)
+            res+= "INT:" + value + " ";
     }
     
     public void printDouble(String value){
-        res+= "INT:" + value + " ";
-        System.out.println("DOUBLE:" + value);
+        if(!comment)
+            res+= "DOUBLE:" + value + " ";
     }
     
     public void startComment(){
@@ -66,7 +66,7 @@ class Utilitaire{
     }
     
     public void copyToFile(){
-        File f = new File("save.html");
+        File f = new File("save.txt");
 		FileWriter fiWri = null;
 		BufferedWriter buffWri = null;
 		
@@ -89,6 +89,10 @@ class Utilitaire{
 				e.printStackTrace();
 			}
 		}
+    }
+    
+    public void printRes(){
+        System.out.println(res);
     }
 }
 
@@ -140,11 +144,11 @@ class exo1 {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\5\1\1\2\1\1\1\0\1\1\1\3\1\4\3\0"+
-    "\2\5\1\1\1\0\2\5\1\6";
+    "\5\1\1\2\1\1\1\0\1\3\1\4\3\0\2\5"+
+    "\1\1\1\0\2\5\1\6";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[21];
+    int [] result = new int[20];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -171,10 +175,10 @@ class exo1 {
   private static final String ZZ_ROWMAP_PACKED_0 =
     "\0\0\0\7\0\16\0\25\0\34\0\43\0\52\0\43"+
     "\0\61\0\70\0\77\0\106\0\115\0\124\0\133\0\142"+
-    "\0\151\0\160\0\167\0\176\0\205";
+    "\0\151\0\160\0\167\0\176";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[21];
+    int [] result = new int[20];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -198,17 +202,17 @@ class exo1 {
 
   private static final String ZZ_TRANS_PACKED_0 =
     "\1\2\1\3\1\4\1\5\1\6\1\7\5\2\1\0"+
-    "\3\2\1\3\1\4\1\5\1\10\1\11\4\2\1\12"+
-    "\1\0\4\2\1\13\1\2\1\0\2\2\1\0\1\10"+
-    "\1\14\1\15\1\10\1\16\1\0\6\17\1\2\5\17"+
-    "\1\20\1\21\4\12\1\0\2\12\4\13\1\0\2\13"+
-    "\3\0\1\12\5\0\1\13\4\0\5\17\1\20\1\22"+
-    "\6\17\1\23\5\17\1\20\1\24\4\2\1\0\1\25"+
-    "\1\2\5\0\1\25\1\0\4\23\1\0\6\23\1\0"+
-    "\1\25\1\23\4\25\1\0\2\25";
+    "\3\2\1\3\1\4\1\5\1\10\1\7\4\2\1\11"+
+    "\1\0\4\2\1\12\1\2\1\0\2\2\1\0\1\10"+
+    "\1\13\1\14\1\10\1\15\1\0\5\16\1\17\1\20"+
+    "\4\11\1\0\2\11\4\12\1\0\2\12\3\0\1\11"+
+    "\5\0\1\12\4\0\5\16\1\17\1\21\6\16\1\22"+
+    "\5\16\1\17\1\23\4\2\1\0\1\24\1\2\5\0"+
+    "\1\24\1\0\4\22\1\0\6\22\1\0\1\24\1\22"+
+    "\4\24\1\0\2\24";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[140];
+    int [] result = new int[133];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -246,10 +250,10 @@ class exo1 {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\7\1\1\0\3\1\3\0\3\1\1\0\3\1";
+    "\7\1\1\0\2\1\3\0\3\1\1\0\3\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[21];
+    int [] result = new int[20];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -556,6 +560,7 @@ class exo1 {
     if (!zzEOFDone) {
       zzEOFDone = true;
         Utilitaire.INSTANCE.copyToFile();
+    Utilitaire.INSTANCE.printRes();
 
     }
   }

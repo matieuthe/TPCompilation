@@ -18,6 +18,7 @@ class Utilitaire{
         this._associations.put("double", "DOUBLE_TYPE");
         this._associations.put("int", "INT_TYPE");
         this._associations.put("while", "WHILE");
+        this._associations.put("print", "PRINT");
         this._associations.put("[", "BO");
         this._associations.put("]", "BC");
         this._associations.put(";", "SCL");
@@ -41,18 +42,17 @@ class Utilitaire{
                 corres = "ID:" + value;
             }
             res+= corres + " ";
-            System.out.println(corres);
         }
     }
     
     public void printInteger(String value){
-        res+= "INT:" + value + " ";
-        System.out.println("INT:" + value);
+        if(!comment)
+            res+= "INT:" + value + " ";
     }
     
     public void printDouble(String value){
-        res+= "INT:" + value + " ";
-        System.out.println("DOUBLE:" + value);
+        if(!comment)
+            res+= "DOUBLE:" + value + " ";
     }
     
     public void startComment(){
@@ -64,7 +64,7 @@ class Utilitaire{
     }
     
     public void copyToFile(){
-        File f = new File("save.html");
+        File f = new File("save.txt");
 		FileWriter fiWri = null;
 		BufferedWriter buffWri = null;
 		
@@ -88,6 +88,10 @@ class Utilitaire{
 			}
 		}
     }
+    
+    public void printRes(){
+        System.out.println(res);
+    }
 }
 
 
@@ -96,12 +100,13 @@ class Utilitaire{
 %standalone
 %eof{
     Utilitaire.INSTANCE.copyToFile();
+    Utilitaire.INSTANCE.printRes();
 %eof}
 
 startComment = \s*\/\*.*
 endComment = \s*\*\/.*
 integer = \s*[0-9]+[^\.]+.*
-double = \s+[0-9]+\.[0-9]+.*
+double = \s*[0-9]+\.[0-9]+.*
 
 
 %%
