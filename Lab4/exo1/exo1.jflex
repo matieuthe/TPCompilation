@@ -90,6 +90,7 @@ class Utilitaire{
     }
     
     public void printRes(){
+        System.out.println("------------ Output ------------");
         System.out.println(res);
     }
 }
